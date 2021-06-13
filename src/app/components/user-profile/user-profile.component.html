@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggleNav(sidenav)">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      Bank Application
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" opened class="vertical-menu">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Banking
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list role="list">
+            <mat-list-item  routerLinkActive="active" routerLink="bank/bank-view">View Bank</mat-list-item>
+            <mat-list-item  routerLinkActive="active" routerLink="bank/create-bank">Add Bank</mat-list-item>
+          </mat-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        </mat-expansion-panel>                     
+      </mat-accordion>
+      <br>
+        <mat-accordion>
+          <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Accounting
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-list role="list">
+              <mat-list-item routerLinkActive="active" routerLink="account/account-view">View Account</mat-list-item>
+              <mat-list-item routerLinkActive="active" routerLink="account/create-account">Add Account</mat-list-item>
+              <mat-list-item routerLinkActive="active" routerLink="/account/details">Account Details</mat-list-item>
+              <mat-list-item routerLinkActive="active" routerLink="/account/transfer">Transfer Money</mat-list-item>
+            </mat-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+          </mat-expansion-panel>                     
+        </mat-accordion>
+        
+        <a type="text" aria-label="Toggle sidenav" mat-icon-button (click)="onLogout()">
+          <mat-icon aria-label="Side nav toggle icon">logout</mat-icon>
+          Signout
+        </a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <p style="height: 85vh">
+        <router-outlet></router-outlet>
+      </p>
+    </mat-sidenav-content>
+</mat-sidenav-container>

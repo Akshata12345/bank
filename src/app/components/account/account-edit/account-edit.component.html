@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-bank">
+      <!-- form card register -->
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Edit Account</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  
+            <div class="form-group">
+              <label for="inputName">Name</label>
+              <input class="form-control" type="text" formControlName="name">
+              
+            </div>
+            <div class="form-group">
+              <label>Select Bank</label><br/>
+              <select [(ngModel)]="selectedBankId" (selectionChange)="setBankDetails()" formControlName="bank" >
+                  <option *ngFor="let bank of Bank" [value]="bank.name">
+                    {{bank.name}}
+                  </option>
+                </select>
+                <!-- <label for="inputBank">Bank</label>
+                <input class="form-control" type="text" formControlName="bank">
+                 error 
+                 <div class="invalid-feedback" *ngIf="submitted && myForm.bank.errors?.required">
+                    Bank is required.
+                  </div> -->
+              
+              </div>
+              <div class="form-group">
+                <label for="inputPassword3">AccountType</label>
+                <input class="form-control" type="text" formControlName="AccountType">
+                 <!-- error
+                 <div class="invalid-feedback" *ngIf="submitted && myForm.AccountType.errors?.required">
+                    AccountType is required.
+                  </div>
+                -->
+              </div>
+  
+              <div class="form-group">
+                <label for="inputVerify3">AccountNo</label>
+                <input class="form-control" type="text" formControlName="AccountNo">
+                <!-- error
+                <div class="invalid-feedback" *ngIf="submitted && myForm.AccountNo.errors?.required">
+                    AccountNo is required.
+                  </div> -->
+               
+              </div><br/>
+  
+            <div class="form-group">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>
+  

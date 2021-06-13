@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-bank">
+      <!-- form card register -->
+      <div class="card-body">
+        <form [formGroup]="transferForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label>Select Bank</label><br/>
+                  <select [(ngModel)]="selectedBankId" (selectionChange)="setBankDetails()" formControlName="bank" >
+                      <option *ngFor="let bank of Bank" [value]="bank.name">
+                        {{bank.name}}
+                      </option>
+                    </select>
+            </div>
+
+            <div class="form-group">
+                <label for="AccountNo">AccountNo</label>
+                <input class="form-control" type="text" formControlName="AccountNo">
+                
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3">IFSC Code</label>
+                <input class="form-control" type="text" formControlName="ifsccode">
+                 <!-- error -->
+                 <div *ngIf="transferForm.controls.ifsccode.invalid && (transferForm.controls.ifsccode.dirty || transferForm.controls.ifsccode.touched)" class="alert alert-danger">
+                  <div *ngIf="transferForm.controls.ifsccode.errors.required">
+                    ifsccode is required.
+                 </div>
+                 <div *ngIf="transferForm.controls.ifsccode.errors.minlength">
+                   ifsccode must have 11 characters.
+                </div>
+                <div *ngIf="transferForm.controls.ifsccode.errors.pattern">
+                  Enter valid ifsccode.
+               </div>
+                 </div>
+              </div>
+
+          <div class="form-group">
+            <label for="inputName">Account Holder Name</label>
+            <input class="form-control" type="text" formControlName="name">
+          </div>
+          <div class="form-group">
+            <label for="inputName">Amount</label>
+            <input class="form-control" type="text" formControlName="amount">
+          </div>
+           <br>
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">Transfer</button>
+          </div>
+        </form>
+  
+      </div>
+    </div><!-- form card register -->
+  </div>
